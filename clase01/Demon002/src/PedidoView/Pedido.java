@@ -3,21 +3,21 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pe.egcc.app.view;
+package PedidoView;
 
+import PedidoService.MateService;
 import javax.swing.JOptionPane;
-import pe.egcc.app.service.MateService;
 
 /**
  *
  * @author Alumno
  */
-public class SumaView extends javax.swing.JFrame {
+public class Pedido extends javax.swing.JFrame {
 
     /**
-     * Creates new form SumaView
+     * Creates new form Pedido
      */
-    public SumaView() {
+    public Pedido() {
         initComponents();
     }
 
@@ -31,16 +31,12 @@ public class SumaView extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        txtNum1 = new javax.swing.JTextField();
-        txtNum2 = new javax.swing.JTextField();
         btnProcesar = new javax.swing.JButton();
+        txtImporte = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Numero 1 :");
-
-        jLabel2.setText("Numero 2: ");
+        jLabel1.setText("Importe");
 
         btnProcesar.setText("Procesar");
         btnProcesar.addActionListener(new java.awt.event.ActionListener() {
@@ -54,51 +50,49 @@ public class SumaView extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2))
-                .addGap(37, 37, 37)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtNum1, javax.swing.GroupLayout.DEFAULT_SIZE, 67, Short.MAX_VALUE)
-                    .addComponent(txtNum2))
-                .addContainerGap(206, Short.MAX_VALUE))
+                .addGap(39, 39, 39)
+                .addComponent(jLabel1)
+                .addGap(79, 79, 79)
+                .addComponent(txtImporte, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(129, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnProcesar)
-                .addGap(53, 53, 53))
+                .addGap(48, 48, 48))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(51, 51, 51)
+                .addGap(59, 59, 59)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(txtNum1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(14, 14, 14)
+                    .addComponent(txtImporte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(50, 50, 50)
                 .addComponent(btnProcesar)
-                .addGap(21, 21, 21)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(txtNum2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(151, Short.MAX_VALUE))
+                .addContainerGap(148, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnProcesarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProcesarActionPerformed
-        // DATOS
-        int n1 = Integer.parseInt(txtNum1.getText());
-        int n2 = Integer.parseInt(txtNum2.getText());
+      
+        //Datos 
+        int n1 = Integer.parseInt(txtImporte.getText());
         
         MateService service;
         service = new MateService();
-        int suma = service.sumar(n1,n2);
+        double proceso = service.proceso(n1);
+        double proceso1 = service.proceso1(n1);
         
-        //REPORTE 
-        String repo = " SUMA :" + suma;
+        String repo = " Importe: " + n1 
+                    + "Impuesto: " +proceso 
+                    + " total :" +proceso1;
+   
+      
         JOptionPane.showMessageDialog(rootPane, repo );
+        
+
         
     }//GEN-LAST:event_btnProcesarActionPerformed
 
@@ -119,20 +113,20 @@ public class SumaView extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(SumaView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Pedido.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(SumaView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Pedido.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(SumaView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Pedido.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(SumaView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Pedido.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new SumaView().setVisible(true);
+                new Pedido().setVisible(true);
             }
         });
     }
@@ -140,8 +134,6 @@ public class SumaView extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnProcesar;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JTextField txtNum1;
-    private javax.swing.JTextField txtNum2;
+    private javax.swing.JTextField txtImporte;
     // End of variables declaration//GEN-END:variables
 }
